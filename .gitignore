@@ -7,7 +7,6 @@ dist/
 
 # Variables d'environnement et secrets
 .env
-.env.*
 
 # Base de données SQLite
 data/*.sqlite

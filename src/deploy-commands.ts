@@ -34,12 +34,6 @@ const proposerCommand = new SlashCommandBuilder()
     );
 
 
-// Commande /cloturer
-const cloturerCommand = new SlashCommandBuilder()
-    .setName("cloturer")
-    .setDescription("Clôture le dernier sondage ouvert dans ce salon");
-
-
 // Commande /choisirdate
 const choisirDateCommand = new SlashCommandBuilder()
     .setName("choisirdate")
@@ -52,18 +46,30 @@ for (let i = 1; i <= 5; i++) {
     proposerCommand.addStringOption(option =>
         option
             .setName(`date${i}`)
-            .setDescription(`Créneau proposé numéro ${i}`)
-            .setRequired(i <= 2)
-            .setMaxLength(80)
+            .setDescription(`Date proposée ${i} (JJ/MM/AAAA HH:mm)`)
+            .setRequired(i === 1)
+            .setMaxLength(16)
     );
 }
+
+// Commande /annuler
+const annulerCommand = new SlashCommandBuilder()
+    .setName("annuler")
+    .setDescription("Annule une soirée BOTC")
+    .addStringOption(option =>
+        option
+            .setName("raison")
+            .setDescription("Raison de l'annulation (facultatif)")
+            .setRequired(false)
+            .setMaxLength(200)
+    );
 
 // Liste des commandes
 const commands = [
     pingCommand.toJSON(),
     proposerCommand.toJSON(),
-    cloturerCommand.toJSON(),
-    choisirDateCommand.toJSON()
+    choisirDateCommand.toJSON(),
+    annulerCommand.toJSON()
 ];
 
 // Connexion à l'API Discord
