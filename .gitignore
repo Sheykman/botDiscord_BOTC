@@ -1,0 +1,23 @@
+
+# Dépendances Node.js
+node_modules/
+
+# Fichiers compilés
+dist/
+
+# Variables d'environnement et secrets
+.env
+.env.*
+
+# Base de données SQLite
+data/*.sqlite
+data/*.sqlite-shm
+data/*.sqlite-wal
+
+# Logs
+*.log
+npm-debug.log*
+
+# Fichiers système et éditeur
+.DS_Store
+.vscode/
